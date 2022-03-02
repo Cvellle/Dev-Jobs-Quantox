@@ -133,88 +133,9 @@ button {
   cursor: pointer;
 }
 
-.header {
-  background-image: url("/src/assets/mobile/bg-pattern-header.svg");
-  padding: 0 6.4vw;
-  /* Rounded sliders */
-}
-@media screen and (min-width: 768px) {
-  .header {
-    background-image: url("/src/assets/tablet/bg-pattern-header.svg");
-  }
-}
-@media screen and (min-width: 1280px) {
-  .header {
-    background-image: url("/src/assets/desktop/bg-pattern-header.svg");
-  }
-}
-.header .wrapper {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  height: 36.2666666667vw;
-}
-@media screen and (min-width: 768px) {
-  .header .wrapper {
-    height: 160px;
-  }
-}
-.header .switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-.header .switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-.header .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-.header .slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-.header input:checked + .slider {
-  background-color: #2196f3;
-}
-.header input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
-}
-.header input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-.header .slider.round {
-  border-radius: 34px;
-}
-.header .slider.round:before {
-  border-radius: 50%;
-}
-
 .jobs {
   display: flex;
   justify-content: center;
-  padding: 0 6.4vw;
 }
 .jobs .wrapper {
   width: 100%;
@@ -226,8 +147,6 @@ button {
 }
 .jobs .wrapper .list-wrapper .list-item {
   flex: 100%;
-  margin: 20px 0;
-  border-radius: 5px;
 }
 @media screen and (min-width: 768px) {
   .jobs .wrapper .list-wrapper .list-item {
@@ -239,28 +158,6 @@ button {
   .jobs .wrapper .list-wrapper .list-item {
     flex: 0 0 33%;
   }
-}
-.jobs .wrapper .list-wrapper .list-item .img-container .img1 {
-  display: block;
-  height: 50px;
-  width: 50px;
-  background-repeat: no-repeat;
-  background-size: calc(100% - 20px);
-  background-position: center;
-  border-radius: 15px;
-}
-.jobs .wrapper .list-wrapper .list-item .img-container + div {
-  margin-top: 16px;
-}
-.jobs .wrapper .list-wrapper .list-item h4 {
-  margin-top: 24px;
-}
-.jobs .wrapper .list-wrapper .list-item h4 + div {
-  margin-top: 16px;
-}
-.jobs .wrapper .list-wrapper .list-item strong {
-  display: block;
-  margin-top: 16px;
 }
 
 /*# sourceMappingURL=App.css.map */

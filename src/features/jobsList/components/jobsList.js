@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Store } from "../../../store/store";
 import { getData } from "../api/getJobs";
@@ -6,24 +6,36 @@ import { getData } from "../api/getJobs";
 const JobsList = () => {
   const { state, dispatch } = React.useContext(Store);
 
-  useEffect(() => {
-    getData(state, dispatch, "FETCH_JOBS", "jobsData");
-  }, []);
+  // useEffect(() => {
 
-  useEffect(() => {}, [state]);
+  // }, []);
 
   return (
-    <div>
-      <MainList passedArray={state.jobsData} />
+    <div className="list-wrapper">
+      {state.jobsData.map((el) => {
+        return <ListItem key={el.id.toString()} elData={el} />;
+      })}
     </div>
   );
 };
-
-const MainList = ({ passedArray }) => {
-  let mapped = passedArray.map((el, i) => {
-    return <div key={el.id}>{el.company}</div>;
-  });
-  return mapped;
+const ListItem = ({ elData }) => {
+  console.log(elData);
+  return (
+    <div className="list-item">
+      <div className="img-container">
+        <span
+          className="img1"
+          style={{ backgroundColor: elData.logoBackground, backgroundImage: "url(" + elData.logo + ")"}}
+        ></span>
+      </div>
+      <div>
+        {elData.postedAt} . {elData.contract}
+      </div>
+      <h4>{elData.position}</h4>
+      <div>{elData.company}</div>
+      <strong>{elData.location}</strong>
+    </div>
+  );
 };
 
 export default JobsList;
