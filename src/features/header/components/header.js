@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 
 const Header = () => {
   return (
-    // <header className="header" style={{backgroundImage: 'url(' + '../../../assets/' + ')'}}>
-
     <header className="header">
       <div className="wrapper">
         <h1>devjobs</h1>

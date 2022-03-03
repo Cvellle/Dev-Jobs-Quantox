@@ -5,18 +5,38 @@ export const Store = React.createContext();
 
 const initialState = {
   jobsData: [],
+  toFilter: [],
+  filtered: [],
 };
 
 const reducer = (state, action) => {
+  console.log(action.payload);
   switch (action.type) {
     case "FETCH":
-      return { ...state, jobsData: action.payload };
+      return { ...state, jobsData: action.payload, toFilter: action.payload };
     case "FILTER":
+      let payloadValue = action.payload.filterBy;
+      let filterArray =
+        payloadValue.length > 0 ? state.filtered : state.toFilter;
+      let returnValue =
+        payloadValue.length === 0
+          ? {
+              ...state,
+              filtered: state.toFilter,
+            }
+          : {
+              ...state,
+              filtered: filterArray.filter((el, i) => {
+                return el[action.payload.filterProp]
+                  .toLowerCase()
+                  .includes(action.payload.filterBy);
+              }),
+            };
+      return returnValue;
+    case "SET_FILTERED":
       return {
         ...state,
-        jobsData: state.jobsdata.filter(
-          (el, i) => el[action.payload.filterProp] !== action.payload.filterBy
-        ),
+        toFilter: action.payload,
       };
     default:
       return state;

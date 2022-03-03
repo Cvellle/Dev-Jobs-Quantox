@@ -19,7 +19,6 @@ const JobsList = () => {
   );
 };
 const ListItem = ({ elData }) => {
-  console.log(elData);
   return (
     <div className="list-item">
       <div className="img-container">

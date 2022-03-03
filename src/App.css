@@ -215,9 +215,101 @@ button {
   display: flex;
   justify-content: center;
   padding: 0 6.4vw;
+  /* Hide the browser's default checkbox */
+  /* Create a custom checkbox */
+  /* On mouse-over, add a grey background color */
+  /* When the checkbox is checked, add a blue background */
+  /* Create the checkmark/indicator (hidden when not checked) */
+  /* Show the checkmark when checked */
+  /* Style the checkmark/indicator */
 }
 .jobs .wrapper {
   width: 100%;
+}
+.jobs .wrapper .search-bar {
+  display: flex;
+}
+.jobs .wrapper .search-bar .left {
+  flex: 0 0 100%;
+}
+@media screen and (min-width: 768px) {
+  .jobs .wrapper .search-bar .left {
+    flex: 0 0 33%;
+  }
+}
+.jobs .wrapper .search-bar .right {
+  flex: 0 0 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.24);
+  z-index: 2;
+  padding: 6.4vw;
+}
+@media screen and (min-width: 768px) {
+  .jobs .wrapper .search-bar .right {
+    position: relative;
+    flex: 0 0 33%;
+  }
+}
+.jobs .wrapper .search-bar .right .inner-wrapper {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  display: flex;
+  align-content: space-between;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  justify-content: flex-start;
+  width: 100%;
+}
+.jobs .wrapper .search-bar .right .inner-wrapper .location {
+  width: 100%;
+  font-style: normal;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.jobs .wrapper .search-bar .right .inner-wrapper .location span {
+  display: block;
+  height: 20px;
+  width: 30px;
+  background-image: url(/src/assets/desktop/icon-location.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.jobs .wrapper .search-bar .right .inner-wrapper .location input {
+  font-size: 16px;
+  line-height: 20px;
+  height: 19.2vw;
+}
+.jobs .wrapper .search-bar .right .inner-wrapper .full-time {
+  height: 19.2vw;
+  width: 100%;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+}
+.jobs .wrapper .search-bar .right .inner-wrapper button {
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  background-color: #3a20ad;
+  color: #ffff;
+  margin-top: auto;
 }
 .jobs .wrapper .list-wrapper {
   display: flex;
@@ -237,7 +329,7 @@ button {
 }
 @media screen and (min-width: 1280px) {
   .jobs .wrapper .list-wrapper .list-item {
-    flex: 0 0 33%;
+    flex: 0 0 33.333%;
   }
 }
 .jobs .wrapper .list-wrapper .list-item .img-container .img1 {
@@ -261,6 +353,58 @@ button {
 .jobs .wrapper .list-wrapper .list-item strong {
   display: block;
   margin-top: 16px;
+}
+.jobs .full-time {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.jobs .full-time input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.jobs .checkmark {
+  position: absolute;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #a8a8a8;
+  border-radius: 5px;
+}
+.jobs .full-time:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+.jobs .full-time input:checked ~ .checkmark {
+  background-color: #474747;
+}
+.jobs .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.jobs .full-time input:checked ~ .checkmark:after {
+  display: block;
+}
+.jobs .full-time .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 /*# sourceMappingURL=App.css.map */
