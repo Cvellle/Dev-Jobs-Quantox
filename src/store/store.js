@@ -4,13 +4,20 @@ import { getData } from "../features/jobsList/api/getJobs";
 export const Store = React.createContext();
 
 const initialState = {
-    jobsData: [],
+  jobsData: [],
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "FETCH_JOBS":
+    case "FETCH":
       return { ...state, jobsData: action.payload };
+    case "FILTER":
+      return {
+        ...state,
+        jobsData: state.jobsdata.filter(
+          (el, i) => el[action.payload.filterProp] !== action.payload.filterBy
+        ),
+      };
     default:
       return state;
   }
@@ -19,16 +26,9 @@ const reducer = (state, action) => {
 export const StoreProvider = (props) => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
   useEffect(() => {
-    getData(
-      state,
-      dispatch,
-      "FETCH_JOBS",
-      "jobsData"
-    );
+    getData(state, dispatch, "FETCH", "jobsData");
   }, []);
   const value = { state, dispatch };
-
-
 
   return <Store.Provider value={value}>{props.children}</Store.Provider>;
 };
