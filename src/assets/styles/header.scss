@@ -1,13 +1,45 @@
 .header {
   background-image: url("/src/assets/mobile/bg-pattern-header.svg");
   padding: 0 vwm(24);
+  width: 100vw;
 
   @include tablet {
     background-image: url("/src/assets/tablet/bg-pattern-header.svg");
+    background-size: contain;
+    height: vwt(160);
   }
 
   @include desktop {
     background-image: url("/src/assets/desktop/bg-pattern-header.svg");
+    background-repeat: no-repeat;
+    height: vw(160);
+  }
+
+  .switch-wrapper {
+    display: flex;
+    align-items: center;
+
+    .img1 {
+      display: inline-block;
+      height: 20px;
+      width: 20px;
+      background-image: url(/src/assets/desktop/icon-sun.svg);
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .switch {
+      margin: 0 16px;
+    }
+
+    .img2 {
+      display: inline-block;
+      height: 12px;
+      width: 12px;
+      background-image: url(/src/assets/desktop/icon-moon.svg);
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
   }
 
   & .wrapper {
@@ -16,6 +48,7 @@
     justify-content: space-between;
     align-items: center;
     height: vwm(136);
+    padding-bottom: 40px;
 
     @include tablet {
       height: 160px;
@@ -25,8 +58,8 @@
   .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 48px;
+    height: 24px;
   }
 
   .switch input {
@@ -42,7 +75,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: white;
     -webkit-transition: 0.4s;
     transition: 0.4s;
   }
@@ -50,27 +83,19 @@
   .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
+    height: 16px;
+    width: 16px;
     left: 4px;
     bottom: 4px;
-    background-color: white;
+    background-color: #5964e0;
     -webkit-transition: 0.4s;
     transition: 0.4s;
   }
 
-  input:checked + .slider {
-    background-color: #2196f3;
-  }
-
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196f3;
-  }
-
   input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+    -webkit-transform: translateX(24px);
+    -ms-transform: translateX(24px);
+    transform: translateX(24px);
   }
 
   /* Rounded sliders */
@@ -82,4 +107,3 @@
     border-radius: 50%;
   }
 }
-

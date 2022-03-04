@@ -3,17 +3,57 @@
   justify-content: center;
   padding: 0 vwm(24);
 
+  @include desktop {
+    padding: 0;
+  }
+
   & .wrapper {
     width: 100%;
+
+    @include desktop {
+      width: 1110px;
+    }
 
     & .search-bar {
       display: flex;
 
+      @include tablet {
+        height: 80px;
+        margin-top: -40px;
+        background-color: #fff;
+      }
+
       & .left {
         flex: 0 0 100%;
+        height: 80px;
+        margin-top: -40px;
+        z-index: 2;
+        background-color: white;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        padding: 0 24px;
+        margin-bottom: vwm(32);
 
         @include tablet {
           flex: 0 0 33%;
+          margin-top: 0;
+        }
+
+        div {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+
+          span {
+            display: inline-block;
+            height: 20px;
+            width: 30px;
+            background-image: url(/src/assets/mobile/icon-filter.svg);
+            background-size: contain;
+            background-repeat: no-repeat;
+          }
         }
       }
 
@@ -24,17 +64,22 @@
         left: 0;
         height: 100vh;
         width: 100vw;
-        display: flex;
+        // display: none;
         justify-content: center;
         align-content: center;
         align-items: center;
         background: rgba(0, 0, 0, 0.24);
         z-index: 2;
-        padding: vwm(24);
+        padding: 0 24px;
+        display: flex;
 
         @include tablet {
           position: relative;
-          flex: 0 0 33%;
+          flex: 1;
+          height: 100%;
+          width: unset;
+          background-color: transparent;
+          display: block;
         }
 
         & .inner-wrapper {
@@ -52,12 +97,21 @@
           justify-content: flex-start;
           width: 100%;
 
+          @include tablet {
+            flex-direction: row;
+            padding: 0;
+          }
+
           & .location {
             width: 100%;
             font-style: normal;
             font-weight: bold;
             display: flex;
             align-items: center;
+
+            @include tablet {
+              width: auto;
+            }
 
             span {
               display: block;
@@ -71,7 +125,8 @@
             input {
               font-size: 16px;
               line-height: 20px;
-              height: vwm(72);
+              height: 72px;
+              width: vwt(172);
             }
           }
 
@@ -84,15 +139,37 @@
             line-height: 20px;
             display: flex;
             align-items: center;
+
+            @include tablet {
+              width: auto;
+              height: auto;
+              margin-left: auto;
+            }
+
+            @include desktop {
+              margin-right: 50px;
+            }
+
+            span.only {
+              @include tablet {
+                display: none;
+              }
+            }
           }
 
           & button {
             width: 100%;
             height: 50px;
             border-radius: 5px;
-            background-color: rgb(58, 32, 173);
+            background-color: #5964e0;
             color: #ffff;
             margin-top: auto;
+
+            @include tablet {
+              width: 123px;
+              height: 48px;
+              margin-top: unset;
+            }
           }
         }
       }
@@ -130,6 +207,7 @@
         }
         & .img-container + div {
           margin-top: 16px;
+          color: #6e8098;
         }
 
         h4 {
@@ -138,11 +216,14 @@
 
         h4 + div {
           margin-top: 16px;
+          color: #6e8098;
         }
 
         & strong {
           display: block;
           margin-top: 16px;
+          color: #5964e0;
+          font-weight: 700;
         }
       }
     }
@@ -160,8 +241,13 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+
+    @include tablet {
+      margin-bottom: 0;
+      padding-left: 0;
+    }
   }
-  
+
   /* Hide the browser's default checkbox */
   .full-time input {
     position: absolute;
@@ -170,7 +256,7 @@
     height: 0;
     width: 0;
   }
-  
+
   /* Create a custom checkbox */
   .checkmark {
     position: absolute;
@@ -180,29 +266,29 @@
     background-color: rgb(168, 168, 168);
     border-radius: 5px;
   }
-  
+
   /* On mouse-over, add a grey background color */
   .full-time:hover input ~ .checkmark {
     background-color: #ccc;
   }
-  
+
   /* When the checkbox is checked, add a blue background */
   .full-time input:checked ~ .checkmark {
     background-color: #474747;
   }
-  
+
   /* Create the checkmark/indicator (hidden when not checked) */
   .checkmark:after {
     content: "";
     position: absolute;
     display: none;
   }
-  
+
   /* Show the checkmark when checked */
   .full-time input:checked ~ .checkmark:after {
     display: block;
   }
-  
+
   /* Style the checkmark/indicator */
   .full-time .checkmark:after {
     left: 9px;

@@ -5,7 +5,7 @@ const Header = () => {
     <header className="header">
       <div className="wrapper">
         <h1>devjobs</h1>
-        <div>
+        <div className="switch-wrapper">
           <span className="img1"></span>
           <label className="switch">
             <input type="checkbox" />
