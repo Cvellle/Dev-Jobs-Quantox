@@ -8,80 +8,18 @@ const initialState = {
   toFilter: [],
   filtered: [],
   filterState: {
-    filterBy: {
-      contract: "",
-      name: "",
-      location: "",
-    },
+    filterBy: {},
     filtered: [],
   },
+  search: false
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case "FETCH":
       return { ...state, jobsData: action.payload, toFilter: action.payload };
-    case "FILTER":
-      let filterArray =
-        state.filtered.length > 0 ? state.filtered : state.toFilter;
-      let returnValue =
-        action.payload.filterBy.length === 0
-          ? {
-              ...state,
-              filtered: state.toFilter,
-            }
-          : {
-              ...state,
-              filtered: filterArray.filter((el, i) => {
-                return el[action.payload.filterProp]
-                  .toLowerCase()
-                  .includes(action.payload.filterBy);
-              }),
-            };
-      return returnValue;
-    case "SET_FILTERED":
-      const newFilter = () => {
-        let filteredArray = state.toFilter.filter((job) => {
-          console.log(job);
-          if (
-            job["contract"] &&
-            !job["contract"]
-              .toLowerCase()
-              .includes(state.filterState.filterBy["contract"])
-          ) {
-            return false;
-          }
-
-          if (
-            job["position"] &&
-            !job["position"]
-              .toLowerCase()
-              .includes(state.filterState.filterBy["name"])
-          ) {
-            console.log(state.filterState.filterBy["name"]);
-            return false;
-          }
-
-          if (
-            job["location"] &&
-            !job["location"]
-              .toLowerCase()
-              .includes(state.filterState.filterBy["location"])
-          ) {
-            return false;
-          }
-
-          return true;
-        });
-
-        return filteredArray;
-      };
-
-      return {
-        ...state,
-        filtered: newFilter(),
-      };
     case "NEW_FILTER":
+      // spread filterBy in state with new values
       return {
         ...state,
         filterState: {
@@ -97,6 +35,43 @@ const reducer = (state, action) => {
           }),
         },
       };
+    case "SET_FILTERED":
+      const newFilter = () => {
+        let filters = state.filterState.filterBy;
+        let filteredArray = state.toFilter.filter((job) => {
+          // check if filter object keys are single ar multi values
+          for (const f in filters) {
+            let arrayCheck = f.split(", ").length > 1;
+            if (
+              filters[f] &&
+              !arrayCheck &&
+              !job[f].toLowerCase().includes(filters[f].toLowerCase())
+            ) {
+              return false;
+            }
+
+            if (filters[f] && arrayCheck) {
+              let matchArray = f.split(", ");
+              let matchBoolean = matchArray.some((someEl) =>
+                job[someEl].toLowerCase().includes(filters[f].toLowerCase())
+              );
+              if (!matchBoolean) {
+                return false;
+              }
+            }
+          }
+          return true;
+        });
+
+        return filteredArray;
+      };
+
+      return {
+        ...state,
+        filtered: newFilter(),
+      };
+    case "SET_SEARCH":
+      return { ...state, search: action.payload };
     default:
       return state;
   }
