@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"
 
 import { Store } from "../../../store/store";
 
 const JobsList = () => {
   const { state, dispatch } = React.useContext(Store);
-  const [sliceList, setSliceList] = useState(12);
-
+  const [sliceList, setSliceList] = useState(12);  
   // increment slice of jobs array
   const loadMore = () => {
     setSliceList(sliceList + 6);
@@ -16,7 +16,7 @@ const JobsList = () => {
       {(!state.search ? state.jobsData : state.filtered)
         .slice(0, sliceList)
         .map((el) => {
-          return <ListItem key={el.id.toString()} elData={el} />;
+          return <ListItem key={el.id.toString()} elData={el} darkProp={state.dark}/>;
         })}
       <div className="more">
         {(state.filtered.length === 0 || state.filtered.length === state.jobsData.length) && sliceList < state.jobsData.length && <button onClick={loadMore}>Load More</button>}
@@ -25,9 +25,15 @@ const JobsList = () => {
   );
 };
 
-const ListItem = ({ elData }) => {
+const ListItem = ({ elData, darkProp }) => {
+  const navigate = useNavigate()
+  const goToDetails = () => {
+    navigate(`/item/${elData.id}`)
+  };
   return (
-    <div className="list-item">
+    <div className="list-item" onClick={goToDetails} style={{
+      background: !darkProp ? '#000000e6' : 'white'
+    }}>
       <div className="img-container">
         <span
           className="img1"

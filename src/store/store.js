@@ -11,7 +11,9 @@ const initialState = {
     filterBy: {},
     filtered: [],
   },
-  search: false
+  search: false,
+  dark: window.matchMedia("(prefers-color-scheme: dark)"),
+  staticDark: window.matchMedia("(prefers-color-scheme: dark)"),
 };
 
 const reducer = (state, action) => {
@@ -72,6 +74,11 @@ const reducer = (state, action) => {
       };
     case "SET_SEARCH":
       return { ...state, search: action.payload };
+    case "SET_DARK":
+      return {
+        ...state,
+        dark: !state.dark,
+      };
     default:
       return state;
   }

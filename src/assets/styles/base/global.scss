@@ -11,6 +11,14 @@ body {
   flex-wrap: wrap;
   background-color: #f7f8fd;
   overflow-x: hidden;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: black;
+  }
+
+  @media (prefers-color-scheme: light) {
+    background: white;
+  }
 }
 
 * {
@@ -115,8 +123,6 @@ address {
 ul,
 li,
 ol {
-  display: block;
-  list-style-type: unset;
   margin-block-start: unset;
   margin-block-end: unset;
   margin-inline-start: unset;
