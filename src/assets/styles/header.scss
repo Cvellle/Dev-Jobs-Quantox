@@ -1,7 +1,7 @@
 .header {
   background-image: url("/src/assets/mobile/bg-pattern-header.svg");
   padding: 0 vwm(24);
-  width: 100vw;
+  width: 100%;
 
   @include tablet {
     background-image: url("/src/assets/tablet/bg-pattern-header.svg");
@@ -13,6 +13,10 @@
     background-image: url("/src/assets/desktop/bg-pattern-header.svg");
     background-repeat: no-repeat;
     height: vw(160);
+  }
+
+  & h1 {
+    color: #fff;
   }
 
   .switch-wrapper {
@@ -51,7 +55,7 @@
     padding-bottom: 40px;
 
     @include tablet {
-      height: 160px;
+      height: 100%;
     }
   }
 

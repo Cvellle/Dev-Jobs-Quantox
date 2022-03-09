@@ -4,7 +4,9 @@ import { Store } from "../../../store/store";
 
 const SearchBar = () => {
   const { state, dispatch } = useContext(Store);
-  
+  const [menuVisible, setMenuVisible] = useState(false);
+  const { dark } = state;
+
   const addFilter = (e) => {
     const current = e.currentTarget;
     let newFilter = current.hasOwnProperty("checked")
@@ -23,21 +25,40 @@ const SearchBar = () => {
   };
 
   const startSearch = () => {
-    dispatch({
-      type: "SET_SEARCH",
-      payload: true
-    });
+    let allEmpty = Object.values(state.filterBy).every(
+      (el) => el.length === 0
+    );
+    if (!allEmpty)
+      dispatch({
+        type: "SET_SEARCH",
+        payload: true,
+      });
+    setMenuVisible(false);
+  };
+
+  const menuToggle = () => {
+    setMenuVisible(!menuVisible);
   };
 
   useEffect(() => {
     dispatch({
       type: "SET_FILTERED",
     });
-  }, [state.filterState.filtered]);
+  }, [state.filterBy]);
 
   return (
-    <div className="search-bar">
-      <div className="left">
+    <div
+      className="search-bar"
+      style={{
+        background: !dark ? "#19202D" : "white",
+      }}
+    >
+      <div
+        className="left"
+        style={{
+          background: !dark ? "#19202D" : "white",
+        }}
+      >
         <div className="name">
           <input
             placeholder="Filter by name"
@@ -45,11 +66,16 @@ const SearchBar = () => {
             type="text"
             name="position, company"
           />
-          <span className="icon1"></span>
+          <span className="icon1" onClick={menuToggle}></span>
         </div>
       </div>
-      <div className="right">
-        <div className="inner-wrapper">
+      <div className={`right ${menuVisible && "right--visible"}`}>
+        <div
+          className="inner-wrapper"
+          style={{
+            background: !dark ? "#19202D" : "white",
+          }}
+        >
           <div className="location">
             <span className="icon2"></span>
             <input
@@ -59,7 +85,12 @@ const SearchBar = () => {
               name="location"
             />
           </div>
-          <label className="full-time">
+          <label
+            className="full-time"
+            style={{
+              color: !dark ? "#fff" : "#000000e6",
+            }}
+          >
             <input
               onInput={addFilter}
               type="checkbox"

@@ -5,18 +5,28 @@ import { Store } from "../../../store/store";
 
 const DetailsItem = ({ itemProp, darkProp }) => {
   return (
-    <div className={`details__item  ${darkProp ? 'details__item--white' : 'details__item--black'}`}>
+    <div
+      className={`details__item  ${
+        darkProp ? "details__item--white" : "details__item--black"
+      }`}
+    >
       <div className="img-container">
         <span
           className="img1"
           style={{
             backgroundColor: itemProp?.logoBackground,
-            backgroundImage: "url(" + itemProp?.logo + ")",
+            backgroundImage: "url(" + itemProp?.logo.slice(1) + ")",
           }}
         ></span>
       </div>
       <div>
-        <h4>{itemProp?.company}</h4>
+        <h4
+          style={{
+            color: !darkProp ? "#fff" : "#000000e6",
+          }}
+        >
+          {itemProp?.company}
+        </h4>
         <div>{itemProp?.website.split("://").slice(1)}</div>
       </div>
       <a href={itemProp?.website} target="_blank">
@@ -30,6 +40,7 @@ const Details = () => {
   const { state, dispatch } = React.useContext(Store);
   const [item, setItem] = useState();
   const params = useParams();
+  let {dark} = state;
 
   useEffect(() => {
     setItem(state.jobsData[params.id - 1]);
@@ -37,13 +48,19 @@ const Details = () => {
 
   return (
     <div className="details-wrapper">
-      <div className={`details  ${state.dark ? 'details--white' : 'details--black'}`}>
-        <DetailsItem itemProp={item && item} darkProp={state.dark} />
+      <div
+        className={`details  ${
+          dark ? "details--white" : "details--black"
+        }`}
+      >
+        <DetailsItem itemProp={item && item} darkProp={dark} />
         <div className="details__header">
           <span>
             {item?.postedAt} . {item?.contract}
           </span>
-          <h2>{item?.position}</h2>
+          <h2  style={{
+            color: !dark ? "#fff" : "#000000e6",
+          }}>{item?.position}</h2>
           <div>{item?.location}</div>
           <button>Apply Now</button>
         </div>
@@ -67,9 +84,19 @@ const Details = () => {
           </ol>
         </div>
       </div>
-      <div className={`details-footer  ${state.dark ? 'details-footer--white' : 'details-footer--black'}`}>
+      <div
+        className={`details-footer  ${
+          dark ? "details-footer--white" : "details-footer--black"
+        }`}
+      >
         <div>
-          <h2>{item?.position}</h2>
+          <h2
+            style={{
+              color: !dark ? "#fff" : "#000000e6",
+            }}
+          >
+            {item?.position}
+          </h2>
           <div>{item?.location}</div>
         </div>
         <button>Apply Now</button>

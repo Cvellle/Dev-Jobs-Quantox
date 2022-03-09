@@ -7,10 +7,7 @@ const initialState = {
   jobsData: [],
   toFilter: [],
   filtered: [],
-  filterState: {
-    filterBy: {},
-    filtered: [],
-  },
+  filterBy: {},
   search: false,
   dark: window.matchMedia("(prefers-color-scheme: dark)"),
   staticDark: window.matchMedia("(prefers-color-scheme: dark)"),
@@ -24,26 +21,19 @@ const reducer = (state, action) => {
       // spread filterBy in state with new values
       return {
         ...state,
-        filterState: {
-          ...state.filterState,
-          filterBy: {
-            ...state.filterState.filterBy,
-            [action.payload.filterProp]: action.payload.filterBy,
-          },
-          filtered: state.filterState.filtered.filter((el, i) => {
-            return el[action.payload.filterProp]
-              .toLowerCase()
-              .includes(action.payload.filterBy);
-          }),
+        filterBy: {
+          ...state.filterBy,
+          [action.payload.filterProp]: action.payload.filterBy,
         },
       };
     case "SET_FILTERED":
       const newFilter = () => {
-        let filters = state.filterState.filterBy;
+        let filters = state.filterBy;
         let filteredArray = state.toFilter.filter((job) => {
           // check if filter object keys are single ar multi values
           for (const f in filters) {
             let arrayCheck = f.split(", ").length > 1;
+            // single filter inputs
             if (
               filters[f] &&
               !arrayCheck &&
@@ -51,7 +41,7 @@ const reducer = (state, action) => {
             ) {
               return false;
             }
-
+            // multi filter input
             if (filters[f] && arrayCheck) {
               let matchArray = f.split(", ");
               let matchBoolean = matchArray.some((someEl) =>

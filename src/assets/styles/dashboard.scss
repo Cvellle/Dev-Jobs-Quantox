@@ -16,6 +16,7 @@
 
     & .search-bar {
       display: flex;
+      border-radius: 10px;
 
       @include tablet {
         height: 80px;
@@ -80,7 +81,10 @@
         background: rgba(0, 0, 0, 0.24);
         z-index: 2;
         padding: 0 24px;
-        display: flex;
+
+        @include mobile {
+          display: none;
+        }
 
         @include tablet {
           position: relative;
@@ -92,6 +96,11 @@
           padding: 0 24px 0 0;
         }
 
+        &--visible {
+          display: flex;
+          position: fixed;
+        }
+
         & .inner-wrapper {
           display: flex;
           justify-content: center;
@@ -99,7 +108,6 @@
           align-items: center;
           flex-wrap: wrap;
           flex-direction: column;
-          display: flex;
           align-content: space-between;
           background-color: white;
           border-radius: 10px;
@@ -120,7 +128,7 @@
             align-items: center;
 
             @include tablet {
-              width: auto;
+              width: 50%;
             }
 
             span {
@@ -168,11 +176,15 @@
               @include tablet {
                 display: none;
               }
+
+              @include desktop {
+                display: inline-block;
+              }
             }
 
             span.text {
               @include tablet {
-                margin: 0 0 0 30px;
+                margin: 0 0 0 35px;
               }
             }
           }
@@ -225,6 +237,7 @@
 
         & .img-container {
           margin-top: calc(-55px);
+
           & .img1 {
             display: block;
             height: 50px;

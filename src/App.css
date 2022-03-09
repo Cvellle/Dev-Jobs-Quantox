@@ -1,4 +1,8 @@
 @charset "UTF-8";
+#root {
+  width: 100%;
+}
+
 html {
   scroll-behavior: smooth;
   max-width: 100%;
@@ -145,7 +149,7 @@ button {
 .header {
   background-image: url("/src/assets/mobile/bg-pattern-header.svg");
   padding: 0 6.4vw;
-  width: 100vw;
+  width: 100%;
   /* Rounded sliders */
 }
 @media screen and (min-width: 768px) {
@@ -161,6 +165,9 @@ button {
     background-repeat: no-repeat;
     height: 11.1111111111vw;
   }
+}
+.header h1 {
+  color: #fff;
 }
 .header .switch-wrapper {
   display: flex;
@@ -195,7 +202,7 @@ button {
 }
 @media screen and (min-width: 768px) {
   .header .wrapper {
-    height: 160px;
+    height: 100%;
   }
 }
 .header .switch {
@@ -270,6 +277,7 @@ button {
 }
 .jobs .wrapper .search-bar {
   display: flex;
+  border-radius: 10px;
 }
 @media screen and (min-width: 768px) {
   .jobs .wrapper .search-bar {
@@ -333,7 +341,11 @@ button {
   background: rgba(0, 0, 0, 0.24);
   z-index: 2;
   padding: 0 24px;
-  display: flex;
+}
+@media screen and (max-width: 767px) {
+  .jobs .wrapper .search-bar .right {
+    display: none;
+  }
 }
 @media screen and (min-width: 768px) {
   .jobs .wrapper .search-bar .right {
@@ -346,6 +358,10 @@ button {
     padding: 0 24px 0 0;
   }
 }
+.jobs .wrapper .search-bar .right--visible {
+  display: flex;
+  position: fixed;
+}
 .jobs .wrapper .search-bar .right .inner-wrapper {
   display: flex;
   justify-content: center;
@@ -353,7 +369,6 @@ button {
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
-  display: flex;
   align-content: space-between;
   background-color: white;
   border-radius: 10px;
@@ -376,7 +391,7 @@ button {
 }
 @media screen and (min-width: 768px) {
   .jobs .wrapper .search-bar .right .inner-wrapper .location {
-    width: auto;
+    width: 50%;
   }
 }
 .jobs .wrapper .search-bar .right .inner-wrapper .location span {
@@ -425,9 +440,14 @@ button {
     display: none;
   }
 }
+@media screen and (min-width: 1280px) {
+  .jobs .wrapper .search-bar .right .inner-wrapper .full-time span.only {
+    display: inline-block;
+  }
+}
 @media screen and (min-width: 768px) {
   .jobs .wrapper .search-bar .right .inner-wrapper .full-time span.text {
-    margin: 0 0 0 30px;
+    margin: 0 0 0 35px;
   }
 }
 .jobs .wrapper .search-bar .right .inner-wrapper button {
@@ -594,6 +614,7 @@ button {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  border-radius: 10px;
 }
 @media screen and (min-width: 1280px) {
   .details-wrapper .details {
@@ -604,7 +625,7 @@ button {
   background: white;
 }
 .details-wrapper .details--black {
-  background: #080606;
+  background: #19202d;
 }
 .details-wrapper .details__item {
   margin-top: -20px;
@@ -632,7 +653,7 @@ button {
   background: white;
 }
 .details-wrapper .details__item--black {
-  background: #080606;
+  background: #19202d;
 }
 @media screen and (max-width: 767px) {
   .details-wrapper .details__item .img-container {
@@ -652,10 +673,14 @@ button {
   height: 100%;
   width: 100%;
   display: block;
-  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 0 0 0 10px;
+}
+@media screen and (min-width: 768px) {
+  .details-wrapper .details__item .img-container span {
+    background-size: calc(100% - 50px);
+  }
 }
 .details-wrapper .details__item .img-container + div {
   width: 100%;
@@ -663,6 +688,9 @@ button {
 @media screen and (min-width: 768px) {
   .details-wrapper .details__item .img-container + div {
     width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
 @media screen and (min-width: 768px) {
@@ -678,6 +706,11 @@ button {
   line-height: 25px;
   text-align: center;
   color: #19202d;
+}
+@media screen and (min-width: 768px) {
+  .details-wrapper .details__item h4 {
+    margin: 0;
+  }
 }
 .details-wrapper .details__item h4 + div {
   font-size: 16px;
@@ -704,9 +737,12 @@ button {
 }
 .details-wrapper .details__header {
   width: 100%;
+  padding: 0 24px;
 }
 @media screen and (min-width: 768px) {
   .details-wrapper .details__header {
+    margin-top: 80px;
+    padding: 0 48px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -752,12 +788,24 @@ button {
   line-height: 26px;
   color: #6e8098;
   margin: 32px 0;
+  padding: 0 24px;
+}
+@media screen and (min-width: 768px) {
+  .details-wrapper .details .description {
+    padding: 0 48px;
+  }
 }
 .details-wrapper .details .requirements {
   font-size: 16px;
   line-height: 26px;
   color: #6e8098;
   margin: 32px 0;
+  padding: 0 24px;
+}
+@media screen and (min-width: 768px) {
+  .details-wrapper .details .requirements {
+    padding: 0 48px;
+  }
 }
 .details-wrapper .details .requirements p {
   margin-top: 32px;
@@ -785,6 +833,12 @@ button {
   line-height: 26px;
   color: #6e8098;
   margin: 0 0 64px 0;
+  padding: 0 24px;
+}
+@media screen and (min-width: 768px) {
+  .details-wrapper .details .role {
+    padding: 0 48px;
+  }
 }
 .details-wrapper .details .role p {
   margin-top: 32px;
@@ -823,7 +877,7 @@ button {
   background: white;
 }
 .details-wrapper .details-footer--black {
-  background: #080606;
+  background: #19202d;
 }
 @media screen and (min-width: 1280px) {
   .details-wrapper .details-footer {

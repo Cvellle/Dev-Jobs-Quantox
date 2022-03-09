@@ -8,9 +8,10 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    border-radius: 10px;
 
     @include desktop {
-        width: 730px;
+      width: 730px;
     }
 
     &--white {
@@ -18,8 +19,8 @@
     }
 
     &--black {
-      background: rgb(8, 6, 6);
-    }  
+      background: #19202d;
+    }
 
     &__item {
       margin-top: -20px;
@@ -44,10 +45,10 @@
       &--white {
         background: white;
       }
-  
+
       &--black {
-        background: rgb(8, 6, 6);
-      } 
+        background: #19202d;
+      }
 
       & .img-container {
         @include mobile {
@@ -63,13 +64,16 @@
         }
 
         & span {
-            height: 100%;
-            width: 100%;
-            display: block;
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            border-radius: 0 0 0 10px;
+          height: 100%;
+          width: 100%;
+          display: block;
+          background-position: center;
+          background-repeat: no-repeat;
+          border-radius: 0 0 0 10px;
+
+          @include tablet {
+            background-size: calc(100% - 50px);
+          }
         }
       }
 
@@ -77,13 +81,16 @@
         width: 100%;
 
         @include tablet {
-            width: auto;
+          width: auto;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
         }
 
         & > * {
-            @include tablet {
-                text-align-last: left;
-            }
+          @include tablet {
+            text-align-last: left;
+          }
         }
       }
 
@@ -95,6 +102,10 @@
         line-height: 25px;
         text-align: center;
         color: #19202d;
+        
+        @include tablet {
+          margin: 0;
+        }
       }
 
       & h4 + div {
@@ -114,18 +125,21 @@
         color: #5964e0;
 
         @include tablet {
-            margin-left: auto;
-            margin-right: 60px;
-            display: flex;
-            align-items: center;
+          margin-left: auto;
+          margin-right: 60px;
+          display: flex;
+          align-items: center;
         }
       }
     }
 
     &__header {
       width: 100%;
+      padding: 0 24px;
 
       @include tablet {
+        margin-top: 80px;
+        padding: 0 48px;
         display: flex;
         flex-wrap: wrap;
         flex-direction: column;
@@ -175,6 +189,11 @@
       line-height: 26px;
       color: #6e8098;
       margin: 32px 0;
+      padding: 0 24px;
+
+      @include tablet {
+        padding: 0 48px;
+      }
     }
 
     & .requirements {
@@ -182,6 +201,11 @@
       line-height: 26px;
       color: #6e8098;
       margin: 32px 0;
+      padding: 0 24px;
+
+      @include tablet {
+        padding: 0 48px;
+      }
 
       p {
         margin-top: 32px;
@@ -216,6 +240,11 @@
       line-height: 26px;
       color: #6e8098;
       margin: 0 0 64px 0;
+      padding: 0 24px;
+
+      @include tablet {
+        padding: 0 48px;
+      }
 
       p {
         margin-top: 32px;
@@ -262,8 +291,8 @@
     }
 
     &--black {
-      background: rgb(8, 6, 6);
-    }  
+      background: #19202d;
+    }
 
     @include desktop {
       padding: 24px calc(50% - 365px);

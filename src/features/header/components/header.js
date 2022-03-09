@@ -3,6 +3,7 @@ import { Store } from "../../../store/store";
 
 const Header = () => {
   const { state, dispatch } = React.useContext(Store);
+  const {dark} = state;
 
   const darkToggle = () => {
     dispatch({
@@ -11,10 +12,8 @@ const Header = () => {
   };
 
   useEffect(() => {
-    document.body.style.background = state.dark ? "#f2f2f2" : "black";
-    // document.body.setAttribute('data-theme', state.dark ? "dark" : "light");
-
-  }, [state.dark]);
+    document.body.style.background = dark ? "#f2f2f2" : "black";
+  }, [dark]);
 
   return (
     <header className="header">
