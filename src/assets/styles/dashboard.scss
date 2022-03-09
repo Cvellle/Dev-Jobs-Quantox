@@ -223,6 +223,7 @@
         background-color: #fff;
         border-radius: 10px;
         padding: 30px;
+        cursor: pointer;
 
         @include tablet {
           flex: 0 0 calc(50% - 30px);
