@@ -2,12 +2,6 @@
 
 ## Live at: [Vercel Live Demo](https://dev-jobs-quantox.vercel.app/)
 
-:octocat:
-
-```
-git clone https://github.com/Cvellle/Dev-Jobs-Quantox.git
-```
-
 ## Stack
 
 **1.** **React CRA**
@@ -17,6 +11,12 @@ git clone https://github.com/Cvellle/Dev-Jobs-Quantox.git
 **3.** **Scss**
 
 ## Terminal instructions
+
+:octocat:
+
+```
+git clone https://github.com/Cvellle/Dev-Jobs-Quantox.git
+```
 
 ```
 npm install
