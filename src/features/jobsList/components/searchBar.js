@@ -25,9 +25,7 @@ const SearchBar = () => {
   };
 
   const startSearch = () => {
-    let allEmpty = Object.values(state.filterBy).every(
-      (el) => el.length === 0
-    );
+    let allEmpty = Object.values(state.filterBy).every((el) => el.length === 0);
     if (!allEmpty)
       dispatch({
         type: "SET_SEARCH",
@@ -61,6 +59,9 @@ const SearchBar = () => {
       >
         <div className="name">
           <input
+            style={{
+              color: !dark ? "#fff" : "#000000e6",
+            }}
             placeholder="Filter by name"
             onInput={addFilter}
             type="text"
@@ -79,6 +80,9 @@ const SearchBar = () => {
           <div className="location">
             <span className="icon2"></span>
             <input
+              style={{
+                color: !dark ? "#fff" : "#000000e6",
+              }}
               onInput={addFilter}
               type="text"
               placeholder="Filter by location"
