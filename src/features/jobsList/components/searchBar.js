@@ -1,22 +1,24 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useDidUpdate } from "../../../hooks/useDidUpdate";
+import { NEW_FILTER, SET_FILTERED, SET_SEARCH } from "../../../store/actionTypes";
 
 import { Store } from "../../../store/store";
 
 const SearchBar = () => {
   const { state, dispatch } = useContext(Store);
   const [menuVisible, setMenuVisible] = useState(false);
-  const { dark } = state;
+  const { dark, filterBy } = state;
 
   const addFilter = (e) => {
     const current = e.currentTarget;
     let newFilter = current.hasOwnProperty("checked")
       ? current.checked
-        ? "Full Time"
+        ? current.value
         : ""
       : current.value;
 
     dispatch({
-      type: "NEW_FILTER",
+      type: NEW_FILTER,
       payload: {
         filterProp: current.name,
         filterBy: newFilter.toLowerCase(),
@@ -25,10 +27,10 @@ const SearchBar = () => {
   };
 
   const startSearch = () => {
-    let allEmpty = Object.values(state.filterBy).every((el) => el.length === 0);
+    let allEmpty = Object.values(filterBy).every((el) => el.length === 0);
     if (!allEmpty)
       dispatch({
-        type: "SET_SEARCH",
+        type: SET_SEARCH,
         payload: true,
       });
     setMenuVisible(false);
@@ -38,11 +40,17 @@ const SearchBar = () => {
     setMenuVisible(!menuVisible);
   };
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   dispatch({
+  //     type: SET_FILTERED,
+  //   });
+  // }, [filterBy]);
+
+  useDidUpdate(() => {
     dispatch({
-      type: "SET_FILTERED",
+      type: SET_FILTERED,
     });
-  }, [state.filterBy]);
+  }, [filterBy]);
 
   return (
     <div
@@ -100,6 +108,7 @@ const SearchBar = () => {
               type="checkbox"
               defaultChecked={false}
               name="contract"
+              value="Full time"
             />
             <span className="text">Full Time</span>
             <span className="only">Only</span>

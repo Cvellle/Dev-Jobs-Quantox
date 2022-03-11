@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 
 import { Store } from "../../../store/store";
-import JobsList from "./jobsList";
-import SearchBar from "./searchBar";
+import JobsList from "./JobsList";
+import SearchBar from "./SearchBar";
 
 const Jobs = () => {
   const { state, dispatch } = React.useContext(Store);

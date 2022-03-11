@@ -40,10 +40,10 @@ const Details = () => {
   const { state, dispatch } = React.useContext(Store);
   const [item, setItem] = useState();
   const params = useParams();
-  let {dark} = state;
+  let {dark, jobsData} = state;
 
   useEffect(() => {
-    setItem(state.jobsData[params.id - 1]);
+    setItem(jobsData[params.id - 1]);
   }, []);
 
   return (

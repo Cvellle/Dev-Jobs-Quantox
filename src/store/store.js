@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
-import { getData } from "../features/jobsList/api/getJobs";
+
+import { FETCH, NEW_FILTER, SET_DARK, SET_FILTERED, SET_SEARCH } from "./actionTypes";
+import { getData } from "./api/getJobs";
 
 export const Store = React.createContext();
 
@@ -15,9 +17,9 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "FETCH":
+    case FETCH:
       return { ...state, jobsData: action.payload, toFilter: action.payload };
-    case "NEW_FILTER":
+    case NEW_FILTER:
       // spread filterBy in state with new values
       return {
         ...state,
@@ -26,7 +28,7 @@ const reducer = (state, action) => {
           [action.payload.filterProp]: action.payload.filterBy,
         },
       };
-    case "SET_FILTERED":
+    case SET_FILTERED:
       const newFilter = () => {
         let filters = state.filterBy;
         let filteredArray = state.toFilter.filter((job) => {
@@ -62,9 +64,9 @@ const reducer = (state, action) => {
         ...state,
         filtered: newFilter(),
       };
-    case "SET_SEARCH":
+    case SET_SEARCH:
       return { ...state, search: action.payload };
-    case "SET_DARK":
+    case SET_DARK:
       return {
         ...state,
         dark: !state.dark,
@@ -77,7 +79,7 @@ const reducer = (state, action) => {
 export const StoreProvider = (props) => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
   useEffect(() => {
-    getData(state, dispatch, "FETCH", "jobsData");
+    getData(state, dispatch, FETCH, "jobsData");
   }, []);
   const value = { state, dispatch };
 

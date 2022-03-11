@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+
+import { SET_DARK } from "../../../store/actionTypes";
 import { Store } from "../../../store/store";
 
 const Header = () => {
@@ -7,7 +9,7 @@ const Header = () => {
 
   const darkToggle = () => {
     dispatch({
-      type: "SET_DARK",
+      type: SET_DARK,
     });
   };
 

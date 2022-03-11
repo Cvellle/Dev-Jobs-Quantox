@@ -1,15 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "./App.css";
-import { Store, StoreProvider } from "./store/store";
-import Jobs from "./features/jobsList/components/jobs";
-import Header from "./features/header/components/header";
-import Details from "./features/details/components/details";
-import React, { useEffect } from "react";
+import { StoreProvider } from "./store/store";
+import Jobs from "./features/jobsList/components/Jobs";
+import Header from "./features/header/components/Header";
+import Details from "./features/details/components/Details";
+import React from "react";
 
 function App() {
-  const { state, dispatch } = React.useContext(Store);  
-
   return (
     <div className="App">
       <StoreProvider>
