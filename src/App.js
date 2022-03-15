@@ -12,17 +12,20 @@ function App() {
   const { dark } = state;
   return (
     <div className="App">
-        <div className="app-container"  style={{
-            background: !dark ? "#121721" : "white",
-          }}>
-          <Header className="header" />
-          <BrowserRouter>
-            <Routes>
-              <Route element={<Jobs />} exact path="/" />
-              <Route element={<Details />} exact path="/item/:id" />
-            </Routes>
-          </BrowserRouter>
-        </div>
+      <div
+        className="app-container"
+        style={{
+          background: !dark ? "#121721" : "white",
+        }}
+      >
+        <Header className="header" />
+        <BrowserRouter>
+          <Routes>
+            <Route element={<Jobs />} exact path="/" />
+            <Route element={<Details />} exact path="/item/:id" />
+          </Routes>
+        </BrowserRouter>
+      </div>
     </div>
   );
 }
