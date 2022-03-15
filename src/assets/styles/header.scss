@@ -3,6 +3,7 @@
   padding: 0 vwm(24);
   width: 100%;
   background-repeat: no-repeat;
+  background-size: contain;
 
   @include tablet {
     background-image: url("/src/assets/tablet/bg-pattern-header.svg");
