@@ -2,6 +2,7 @@
   background-image: url("/src/assets/mobile/bg-pattern-header.svg");
   padding: 0 vwm(24);
   width: 100%;
+  background-repeat: no-repeat;
 
   @include tablet {
     background-image: url("/src/assets/tablet/bg-pattern-header.svg");

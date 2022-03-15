@@ -79,7 +79,7 @@ const reducer = (state, action) => {
 export const StoreProvider = (props) => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
   useEffect(() => {
-    getData(state, dispatch, FETCH, "jobsData");
+    getData(state, dispatch, FETCH);
   }, []);
   const value = { state, dispatch };
 

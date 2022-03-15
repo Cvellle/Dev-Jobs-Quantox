@@ -6,6 +6,7 @@ import { Store } from "../../../store/store";
 const JobsList = () => {
   const { state, dispatch } = React.useContext(Store);
   const [sliceList, setSliceList] = useState(12);
+  const {jobsData, filtered, search, dark} = state;
   // increment slice of jobs array
   const loadMore = () => {
     setSliceList(sliceList + 6);
@@ -13,21 +14,23 @@ const JobsList = () => {
 
   return (
     <div className="list-wrapper">
-      {(!state.search ? state.jobsData : state.filtered)
+      {(!search ? jobsData : filtered)
         .slice(0, sliceList)
         .map((el) => {
           return (
             <ListItem
               key={el.id.toString()}
               elData={el}
-              darkProp={state.dark}
+              darkProp={dark}
             />
           );
         })}
       <div className="more">
-        {(state.filtered.length === 0 ||
-          state.filtered.length === state.jobsData.length) &&
-          sliceList < state.jobsData.length && (
+        {/* check if the search has started, and filetered length */}
+        {((
+          (filtered.length === 0 && !search) ||
+          filtered.length === jobsData.length)) &&
+          sliceList < jobsData.length && (
             <button onClick={loadMore}>Load More</button>
           )}
       </div>

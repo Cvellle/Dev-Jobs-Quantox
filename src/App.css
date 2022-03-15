@@ -164,6 +164,7 @@ select:-webkit-autofill:focus {
   background-image: url("/src/assets/mobile/bg-pattern-header.svg");
   padding: 0 6.4vw;
   width: 100%;
+  background-repeat: no-repeat;
   /* Rounded sliders */
 }
 @media screen and (min-width: 768px) {
@@ -422,15 +423,34 @@ select:-webkit-autofill:focus {
   background-size: contain;
   background-repeat: no-repeat;
 }
-.jobs .wrapper .search-bar .right .inner-wrapper .location input {
+.jobs .wrapper .search-bar .right .inner-wrapper .location select {
   font-size: 16px;
   line-height: 20px;
   height: 80px;
+  border: none;
+  background-color: unset;
+  color: #858585;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: none;
+}
+.jobs .wrapper .search-bar .right .inner-wrapper .location select::-ms-expand {
+  display: none;
 }
 @media screen and (min-width: 768px) {
-  .jobs .wrapper .search-bar .right .inner-wrapper .location input {
+  .jobs .wrapper .search-bar .right .inner-wrapper .location select {
     width: 17.4479166667vw;
   }
+}
+.jobs .wrapper .search-bar .right .inner-wrapper .location select.light.selected {
+  color: #000000e6;
+}
+.jobs .wrapper .search-bar .right .inner-wrapper .location select.dark.selected {
+  color: #fff;
+}
+.jobs .wrapper .search-bar .right .inner-wrapper .location select option {
+  color: black;
 }
 .jobs .wrapper .search-bar .right .inner-wrapper .full-time {
   height: 19.2vw;

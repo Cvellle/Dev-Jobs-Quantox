@@ -145,13 +145,35 @@
               background-repeat: no-repeat;
             }
 
-            input {
+            select {
               font-size: 16px;
               line-height: 20px;
               height: 80px;
+              border: none;
+              background-color: unset;
+              color: rgb(133, 133, 133);
+              -moz-appearance: none;
+              -webkit-appearance: none;
+              appearance: none;
+              background-image: none;
+
+              &::-ms-expand {
+                display: none;
+              }
 
               @include tablet {
                 width: vwt(134);
+              }
+
+              &.light.selected {
+                color: #000000e6;
+              }
+
+              &.dark.selected {
+                color: #fff;
+              }
+              option {
+                color: black;
               }
             }
           }

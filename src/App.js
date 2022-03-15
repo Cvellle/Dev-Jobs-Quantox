@@ -1,17 +1,20 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "./App.css";
-import { StoreProvider } from "./store/store";
+import { Store } from "./store/store";
 import Jobs from "./features/jobsList/components/Jobs";
 import Header from "./features/header/components/Header";
 import Details from "./features/details/components/Details";
-import React from "react";
+import React, { useContext } from "react";
 
 function App() {
+  const { state, dispatch } = useContext(Store);
+  const { dark } = state;
   return (
     <div className="App">
-      <StoreProvider>
-        <div className="app-container">
+        <div className="app-container"  style={{
+            background: !dark ? "#121721" : "white",
+          }}>
           <Header className="header" />
           <BrowserRouter>
             <Routes>
@@ -20,7 +23,6 @@ function App() {
             </Routes>
           </BrowserRouter>
         </div>
-      </StoreProvider>
     </div>
   );
 }
