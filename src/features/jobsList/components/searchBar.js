@@ -11,13 +11,13 @@ import { Store } from "../../../store/store";
 const SearchBar = () => {
   const { state, dispatch } = useContext(Store);
   const [menuVisible, setMenuVisible] = useState(false);
-  const [selected, setSelecetd] = useState('');
+  const [selected, setSelecetd] = useState("");
   const { dark, filterBy, jobsData } = state;
 
   // spread store state with new value
   const addFilter = (e) => {
     const current = e.currentTarget;
-  // check if the input has checked property
+    // check if the input has checked property
     let newFilter = current.hasOwnProperty("checked")
       ? current.checked
         ? current.value
@@ -109,14 +109,18 @@ const SearchBar = () => {
           <div className="location">
             <span className="icon2"></span>
             <select
-              className={`${!dark ? 'dark' : 'light'} ${selected ? 'selected' : ''}`}
+              className={`${!dark ? "dark" : "light"} ${
+                selected ? "selected" : ""
+              }`}
               onChange={addSelectFilter}
               name="location"
-              defaultValue={''}
+              defaultValue={""}
             >
-               <option value=''>Filter by location</option>
+              <option value="">Filter by location</option>
               {locationsSet.map((location, i) => (
-                <option key={i} value={location}>{location}</option>
+                <option key={i} value={location}>
+                  {location}
+                </option>
               ))}
             </select>
           </div>
