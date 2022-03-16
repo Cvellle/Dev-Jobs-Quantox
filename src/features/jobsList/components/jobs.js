@@ -1,12 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-import { Store } from "../../../store/store";
-import JobsList from "./JobsList";
-import SearchBar from "./SearchBar";
+import JobsList from "./jobsList";
+import SearchBar from "./searchBar";
 
-const Jobs = () => {
-  const { state, dispatch } = React.useContext(Store);
-  
+const Jobs = () => {  
   return (
     <div className="jobs">
       <div className="wrapper">

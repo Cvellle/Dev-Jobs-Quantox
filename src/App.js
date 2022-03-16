@@ -2,9 +2,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "./App.css";
 import { Store } from "./store/store";
-import Jobs from "./features/jobsList/components/Jobs";
-import Header from "./features/header/components/Header";
-import Details from "./features/details/components/Details";
+
+import Jobs from "./features/jobsList/components/jobs";
+import Header from "./features/header/components/header";
+import Details from "./features/details/components/details";
 import React, { useContext } from "react";
 
 function App() {
