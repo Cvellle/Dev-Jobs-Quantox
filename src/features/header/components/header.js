@@ -13,11 +13,6 @@ const Header = () => {
     });
   };
 
-  useEffect(() => {
-    // recognize broser's theme - light or dark
-    document.body.style.background = dark ? "#f2f2f2" : "black";
-  }, [dark]);
-
   return (
     <header className="header">
       <div className="wrapper">

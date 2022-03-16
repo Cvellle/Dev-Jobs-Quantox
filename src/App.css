@@ -3,6 +3,10 @@
   width: 100%;
 }
 
+.app-container {
+  min-height: 100vh;
+}
+
 html {
   scroll-behavior: smooth;
   max-width: 100%;
