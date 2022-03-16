@@ -1,7 +1,7 @@
 import React from "react";
 
-import JobsList from "./jobsList";
-import SearchBar from "./searchBar";
+import JobsList from "./JobsList";
+import SearchBar from "./SearchBar";
 
 const Jobs = () => {  
   return (
